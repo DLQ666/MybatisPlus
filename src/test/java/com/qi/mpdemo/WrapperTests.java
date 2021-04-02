@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *@program: mpdemo
@@ -34,5 +36,18 @@ public class WrapperTests {
                 .isNotNull("email");
         List<User> users = userMapper.selectList(queryWrapper);
         users.forEach(System.out::println);
+    }
+
+    @Test
+    public void test() {
+        String[] strs = new String[]{"1", "2", "3", "4", "5", "6"};
+        System.out.println(strs.length >> 1);
+        System.out.println(strs[1]);
+        List<String> list = new ArrayList<>(10);
+        for (int i = 0; i < strs.length >> 1; i++) {
+            System.out.println(strs[i]);
+            list.add(strs[i]);
+        }
+        System.out.println(list);
     }
 }
